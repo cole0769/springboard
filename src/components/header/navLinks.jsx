@@ -40,18 +40,22 @@ const Link = styled.a`
 
 export function NavLinks(props) {
   return (
+    <div className="nav-lines-container">
     <NavLinksContainer>
-      <LinksWrapper>
-        <LinkItem>
-          <Link href="#">Home</Link>
-        </LinkItem>
-        <LinkItem>
-          <Link href="#">Dashboard</Link>
-        </LinkItem>
-        <LinkItem>
-          <Link href="#">Utilities</Link>
-        </LinkItem>
-      </LinksWrapper>
+        <div className="nav-links-wrapper">
+        <LinksWrapper>
+          <LinkItem>
+            <Link href="/">Home</Link>
+          </LinkItem>
+          <LinkItem>
+            <Link href="/dashboards">Dashboards</Link>
+          </LinkItem>
+          <LinkItem>
+            <Link href="/utilities">Utilities</Link>
+          </LinkItem>
+        </LinksWrapper>
+        </div>
     </NavLinksContainer>
+    </div>
   );
 }
