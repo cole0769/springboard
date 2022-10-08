@@ -4,15 +4,18 @@ import Axios from 'axios';
 function Utilities(props) {
 
   const [name, setName ] = useState("");
+  const [pmtData, setPmtData] = useState([]);
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    alert(`Submitting Payment Trxn ${name}`)
+    // alert(`Submitting Payment Trxn ${name}`)
   }
 
   const base_url = "https://api.paylution.com/rest/v3/payments/";
-  const pmt_id = "pmt-915bbb1a-8c64-4a06-a45f-7216dca0514a";
+  // const pmt_id = "pmt-915bbb1a-8c64-4a06-a45f-7216dca0514a";
   const auth = "Basic cmVzdGFwaXVzZXJANzA2MzUxNzAxNjg3OnhRYzZZeUU5OEpkZUpuOTg=";
-  
+  var status = pmtData.map((pmtData => pmtData.status))
+  var amount = pmtData.map((pmtData => pmtData.amount))
+  var notes = pmtData.map((pmtData => pmtData.notes))
   var config = {
     method: 'get',
     url: base_url + name,
@@ -25,6 +28,7 @@ function Utilities(props) {
   const getUsers = () => {
     Axios(config).then(function (response) {
       console.log(JSON.stringify(response.data));
+      setPmtData(response.data);
     })
     .catch(function (error) {
     console.log(error);
@@ -38,8 +42,9 @@ function Utilities(props) {
       <label>
         PmtId: <input type="text" value={name} onChange={e => setName(e.target.value)}/>
       </label>
-      <h1><button onClick={ getUsers }> Get Hyper Users</button> </h1>
+      <h1><button disabled={!name} onClick={ getUsers }> Get Hyper Users</button> </h1>
       </form>
+      <h5>Status: </h5>
     </div>
   );
 }

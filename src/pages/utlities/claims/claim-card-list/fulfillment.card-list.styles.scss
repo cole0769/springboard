@@ -1,0 +1,25 @@
+.account-card-list {
+    margin: 0 auto;
+    display: flexbox;
+    width: 95vw;
+
+    .account-image {
+      display: flex;
+      align-items: left;
+      vertical-align: top;
+    }
+
+    .account-name {
+      margin-left: 5px;
+      text-align: left;
+    }
+
+    .account-details {
+      
+      margin-left: 15px;
+      text-align: left;
+      font-size: small;
+    }
+
+  }
+ 
