@@ -6,28 +6,43 @@ import Form from 'react-bootstrap/Form';
 import Stack from 'react-bootstrap/Stack';
 import Button from 'react-bootstrap/Button';
 import './cs.page.styles.scss';
-import SiblingClaimTable from '../claims/claim-list/sibling.table.component';
 import { getDwData } from '../../../components/fetch-data/data.fetch';
+import SiblingClaimTable from './sibling.table.component';
+import ParentClaimContainer from './claim.container.component';
+import FulfillmentClaimTable from './fulfillment.table.component';
+import DataTable from './sibling.table.component2';
 
-function simulateNetworkRequest() {
-    return new Promise((resolve) => setTimeout(resolve, 2000));
-  }
+// function simulateNetworkRequest() {
+//     return new Promise((resolve) => setTimeout(resolve, 2000));
+//   }
 
 export default function ClaimSearch() {
     const [isLoading, setLoading] = useState(false);
     const [claim, setClaim] = useState('');
     const [updated, setUpdated] = useState(claim);
+    const [fulfilldata, setfulfillData] = useState([]);
     const [siblingdata, setsiblingData] = useState([]);
-    // const [parentData, setparentData] = useState([]);
+    const [parentdata, setparentData] = useState([]);
     
+    async function fetchParent(updated) {
+        const result = await getDwData('/claim/getparent/' + updated);
+        setparentData(result.data);
+        console.log('parent-url',result)
+    };
     async function fetchSiblings(updated) {
         const result = await getDwData('/claim/getsibling/' + updated);
         setsiblingData(result.data);
-        console.log('sibling-result',result)
+        console.log('sibling-url',result)
     };
-    
+    async function fetchFulfillment(updated) {
+        const result = await getDwData('/claim/getfulfillment/' + updated);
+        setfulfillData(result.data);
+        console.log('fulfill-url',result)
+    };
     useEffect(() => {
         if (isLoading) {
+            fetchParent(updated);
+            fetchFulfillment(updated);
             fetchSiblings(updated).then(() => {
             setLoading(false);
             console.log('effect:', isLoading);
@@ -59,18 +74,30 @@ export default function ClaimSearch() {
                         </Button>
                     </Stack>
                 </Row>
-                <Row className='gang-parent-details'>
-                    <Col className='parent-details' sm={6}></Col>
-                    <Col className='dept-details'sm={6}></Col>
+                <Row className='gang-parent-details-row'>
+                    {/* <Col className='parent-details' sm={6}> */}
+                        <ParentClaimContainer claims = {parentdata} fulfilled = {fulfilldata} />
+                    {/* </Col> */}
+                    {/* <Col className='dept-details'sm={6}></Col> */}
+                </Row>
+                <Row className='fullfillment-claims-table'>
+                    <Col>
+                        <div className='fulfillment-table-name'>
+                            Fulfillment
+                        </div>
+                        <FulfillmentClaimTable claims = {fulfilldata} />
+                    </Col>
                 </Row>
                 <Row className='sibling-claims-table'>
                     <Col>
-                        <SiblingClaimTable claims = {siblingdata} />
+                    <div className='sibling-table-name'>
+                            Sibling Claim Details
+                        </div>
+                        <DataTable claims = {siblingdata} /> 
+                        {/* <SiblingClaimTable claims = {siblingdata} /> */}
                     </Col>
                 </Row>
-                <Row className='fullfillment-claims-table'>
-                    <Col></Col>
-                </Row>
+                
             </Container>
         </div>
 

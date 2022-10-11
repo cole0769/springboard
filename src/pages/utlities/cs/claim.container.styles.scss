@@ -1,0 +1,127 @@
+.parent-id-card-container{
+    height: 26rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    .parent-card-1 {
+        padding: .5rem .5rem .5rem .5rem;
+        background-color: #ffffff;
+        text-align: left;
+        width: 28rem;
+        height: 24rem;
+        border: #000000;
+        border-style: solid;
+        border-radius: 7px;
+        border-width: .5px;
+        margin-bottom: .5rem;
+        margin-right: .5rem;
+
+        .parentid {
+            width: 100px;
+            margin-bottom: .0rem;
+            margin-right: .5rem;
+            text-align: center;
+        }
+        .claimstatus {
+            width: 100px;
+            margin-bottom: .5rem;
+            margin-right: .5rem;
+            text-align: center;
+        }
+        .claimcount {
+            width: 75px;
+            margin-bottom: .5rem;
+            margin-right: .5rem;
+            text-align: right;
+        }
+        .refundtotal {
+            width: 125px;
+            margin-bottom: .5rem;
+            margin-right: .5rem;
+            text-align: right;
+        }
+        .contact {
+            width: 19rem;
+            height: 50px;
+            margin-right: 1rem;
+            margin-bottom: 8rem;
+            text-align: left;
+        }
+        .phone-email {
+            .phone {
+                width: 28rem;
+                margin-right: .5rem;
+                margin-bottom: .5rem;
+            }
+            .email {
+                width: 28rem;
+                margin-right: .5rem;
+                margin-bottom: .5rem;
+            }
+
+        }
+    }
+        .parent-card-2 {
+            padding: .5rem .5rem .5rem .5rem;
+            background-color: #ffffff;
+            text-align: left;
+            width: 28rem;
+            height: 24rem;
+            border: #000000;
+            border-style: solid;
+            border-radius: 7px;
+            border-width: .5px;
+            
+            .originalid {
+                width: 13.5rem;
+                margin-bottom: .5rem;
+                margin-right: .5rem;
+                text-align: center;
+            }
+            .duplicateid {
+                width: 13.5rem;
+                margin-bottom: .5rem;
+                margin-right: .5rem;
+                text-align: center;
+            }
+            .processeddate {
+                width: 13.5rem;
+                margin-bottom: .5rem;
+                margin-right: .5rem;
+                text-align: center;
+            }
+            .postmarkdate {
+                width: 13.5rem;
+                margin-bottom: .5rem;
+                margin-right: .5rem;
+                text-align: center;
+            }
+            .ftype {
+                width: 28rem;
+                margin-bottom: .5rem;
+                margin-right: .5rem;
+                text-align: center;
+            }
+            .client {
+                width: 28rem;
+                margin-bottom: .5rem;
+                margin-right: .5rem;
+                text-align: left;
+            }
+            .dept {
+                width: 28rem;
+                margin-bottom: .5rem;
+                margin-right: .5rem;
+                text-align: left;
+            }
+            
+            .deptname {
+                width: 28rem;
+                margin-right: .5rem;
+                margin-bottom: .5rem;
+                text-align: left;
+            }
+            
+            
+    }
+}
